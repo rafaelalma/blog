@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const allLangPosts = await getCollection('blog', ({ id }) => {
+  return id.startsWith(lang)
+})
+
+const uniqueTags = [
+  ...new Set(allLangPosts.map((post) => post.data.tags).flat()),
+]
+
+const pageTitle = t('tags.title')
+const description = t('tags.description')
+---
+
+<BaseLayout pageTitle={pageTitle} description={description}>
+  <h2>{t('tags.subtitle')}</h2>
+  <div class="tags">
+    {
+      uniqueTags.map((tag) => (
+        <p class="tag">
+          <a href={`/${lang}/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539f;
+    text-decoration: none;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: solid 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
+</style>

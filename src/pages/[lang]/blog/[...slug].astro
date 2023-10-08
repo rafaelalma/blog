@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('blog')
+
+  const paths = pages.map((page) => {
+    const [lang, ...slug] = page.slug.split('/')
+    return { params: { lang, slug: slug.join('/') || undefined }, props: page }
+  })
+
+  return paths
+}
+
+const { lang } = Astro.params
+const page = Astro.props
+const formattedDate = page.data.date.toLocaleString(lang)
+
+const { Content } = await page.render()
+---
+
+<BaseLayout pageTitle={page.data.title} description={page.data.description}>
+  <p>by {page.data.author} • {formattedDate}</p>
+  <p><em>{page.data.description}</em></p>
+  <img src={page.data.image.url} width="300" alt={page.data.image.alt} />
+  <div class="tags">
+    {
+      page.data.tags.map((tag: string) => (
+        <p class="tag">
+          <a href={`/${lang}/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+  <Content />
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539f;
+    text-decoration: none;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: solid 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
+</style>

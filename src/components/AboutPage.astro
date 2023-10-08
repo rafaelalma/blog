@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
-const pageTitle = 'About Me'
-const description = 'about rafaelalma'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 const identity = {
   firstName: 'Rafael',
@@ -28,10 +29,13 @@ const goal = 3
 const skillColor = '#ff9776'
 const fontWeight = 'bold'
 const textCase = 'uppercase'
+
+const pageTitle = t('about.title')
+const description = t('about.description')
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <h2>... and my new Astro site!</h2>
+  <h2>{t('about.subtitle')}</h2>
   <p>
     I am working through Astro's introductory tutorial. This is the second page
     on my website, and it's the first one I built myself!

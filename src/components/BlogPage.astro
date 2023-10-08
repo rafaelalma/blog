@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import BlogPost from './BlogPost.astro'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const allLangPosts = await getCollection('blog', ({ id }) => {
+  return id.startsWith(lang)
+})
+
+const pageTitle = t('blog.title')
+const description = t('blog.description')
+---
+
+<BaseLayout pageTitle={pageTitle} description={description}>
+  <h2>{t('blog.subtitle')}</h2>
+  <ul>
+    {
+      allLangPosts.map((post) => (
+        <BlogPost
+          url={`${post.collection}/${post.slug.split('/')[1]}`}
+          title={post.data.title}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>
