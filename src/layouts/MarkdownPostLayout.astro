@@ -1,0 +1,54 @@
+---
+import { type CollectionEntry } from 'astro:content'
+
+import BaseLayout from './BaseLayout.astro'
+
+interface Props {
+  lang: string
+  post: CollectionEntry<'blog'>['data']
+}
+
+const { lang, post } = Astro.props
+const formattedDate = post.date.toLocaleString(lang)
+---
+
+<BaseLayout pageTitle={post.title} description={post.description}>
+  <p>by {post.author} • {formattedDate}</p>
+  <p><em>{post.description}</em></p>
+  {
+    post.image ? (
+      <img src={post.image.url} width="300" alt={post.image.alt} />
+    ) : null
+  }
+  <div class="tags">
+    {
+      post.tags.map((tag: string) => (
+        <p class="tag">
+          <a href={`/${lang}/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+  <slot />
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539f;
+    text-decoration: none;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: solid 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
+</style>

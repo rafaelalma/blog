@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import BlogPost from '../../../components/BlogPost.astro'
@@ -23,10 +23,14 @@ export async function getStaticPaths() {
   })
 }
 
+interface Props {
+  posts: ReadonlyArray<CollectionEntry<'blog'>>
+}
+
 const { tag } = Astro.params
 const { posts } = Astro.props
 
-const pageTitle = tag
+const pageTitle = tag ?? 'Tag'
 const description = `Posts tagged with ${tag}`
 ---
 
