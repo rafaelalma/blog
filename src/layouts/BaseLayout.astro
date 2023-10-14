@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url)
 const { pageTitle, description } = Astro.props
 ---
 
-<html lang={lang}>
+<html lang={lang} class="h-full">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,10 +22,14 @@ const { pageTitle, description } = Astro.props
     <meta name="description" content={description} />
     <title>{pageTitle}</title>
   </head>
-  <body class="p-6">
-    <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
+  <body class="h-full flex flex-col">
+    <div class="flex-1">
+      <Header />
+      <div class="p-6">
+        <h1 class="text-2xl">{pageTitle}</h1>
+        <slot />
+      </div>
+    </div>
     <Footer />
   </body>
 </html>

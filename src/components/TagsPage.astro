@@ -25,7 +25,9 @@ const description = t('tags.description')
     {
       uniqueTags.map((tag) => (
         <p>
-          <a href={`/${lang}/tags/${tag}`}>{tag}</a>
+          <a class="underline" href={`/${lang}/tags/${tag}`}>
+            {tag}
+          </a>
         </p>
       ))
     }
