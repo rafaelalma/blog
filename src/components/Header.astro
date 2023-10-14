@@ -1,7 +1,19 @@
 ---
-import Navigation from './Navigation.astro'
+import Menu from './Menu'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
-<header class="mb-8">
-  <Navigation />
+<header class="flex justify-between items-center md:items-baseline">
+  <a href={`/${lang}`} class="text-3xl">rafaelalma</a>
+  <nav class="hidden md:flex md:flex-1 md:justify-center">
+    <ul class="flex gap-6">
+      <li><a class="text-xl" href={`/${lang}/about`}>{t('nav.about')}</a></li>
+      <li><a class="text-xl" href={`/${lang}/blog`}>{t('nav.blog')}</a></li>
+      <li><a class="text-xl" href={`/${lang}/tags`}>{t('nav.tags')}</a></li>
+    </ul>
+  </nav>
+  <Menu client:load lang={lang} />
 </header>

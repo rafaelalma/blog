@@ -7,7 +7,6 @@ export const defaultLang = 'en'
 
 export const ui = {
   en: {
-    'nav.home': 'Home',
     'nav.about': 'About',
     'nav.blog': 'Blog',
     'nav.tags': 'Tags',
@@ -25,7 +24,6 @@ export const ui = {
     'tags.subtitle': 'Tags',
   },
   es: {
-    'nav.home': 'Inicio',
     'nav.about': 'Sobre mí',
     'nav.blog': 'Blog',
     'nav.tags': 'Temas',
