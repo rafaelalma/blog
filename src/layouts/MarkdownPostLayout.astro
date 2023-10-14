@@ -20,10 +20,10 @@ const formattedDate = post.date.toLocaleString(lang)
       <img src={post.image.url} width="300" alt={post.image.alt} />
     ) : null
   }
-  <div class="tags">
+  <div>
     {
       post.tags.map((tag: string) => (
-        <p class="tag">
+        <p>
           <a href={`/${lang}/tags/${tag}`}>{tag}</a>
         </p>
       ))
@@ -31,24 +31,3 @@ const formattedDate = post.date.toLocaleString(lang)
   </div>
   <slot />
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539f;
-    text-decoration: none;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: solid 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

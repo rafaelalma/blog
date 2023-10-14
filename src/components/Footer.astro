@@ -1,18 +1,9 @@
 ---
+import LanguagePicker from './LanguagePicker.astro'
 import Social from './Social.astro'
-import LanguagePicker from './LanguagePicker.astro';
 ---
 
-<footer>
+<footer class="flex items-center gap-4 mt-8">
   <LanguagePicker />
   <Social platform="github" username="rafaelalma" />
 </footer>
-
-<style>
-  footer {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Greeting from './Greeting'
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
@@ -12,8 +11,4 @@ const description = t('home.description')
 
 <BaseLayout pageTitle={pageTitle} description={description}>
   <h2>{t('home.subtitle')}</h2>
-  <Greeting
-    client:load
-    messages={['Hej', 'Hallo', 'Hola', 'Habari', 'Hello']}
-  />
 </BaseLayout>
