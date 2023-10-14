@@ -31,7 +31,7 @@ const { tag } = Astro.params
 const { posts } = Astro.props
 
 const pageTitle = tag ?? 'Tema'
-const description = `Publicaciones que tratan sobre ${tag}`
+const description = `Publicaciones que tratan sobre ${tag}:`
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
