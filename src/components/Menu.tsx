@@ -17,7 +17,7 @@ export default function Menu({ lang }: Props) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          className="w-8 icon-menu"
+          className="icon-menu w-8"
         >
           <path
             className="secondary"
@@ -29,13 +29,13 @@ export default function Menu({ lang }: Props) {
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        className="absolute inset-0 bg-white flex flex-col gap-48 p-6"
+        className="absolute inset-0 flex flex-col gap-48 bg-white p-6"
       >
         <button onClick={() => setIsOpen(false)} className="self-end">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            className="w-8 icon-close"
+            className="icon-close w-8"
           >
             <path
               className="secondary"
@@ -48,17 +48,17 @@ export default function Menu({ lang }: Props) {
           <nav>
             <ul className="flex flex-col gap-6">
               <li>
-                <a className="text-3xl block w-full" href={`/${lang}/about`}>
+                <a className="block w-full text-3xl" href={`/${lang}/about`}>
                   {t('nav.about')}
                 </a>
               </li>
               <li>
-                <a className="text-3xl block w-full" href={`/${lang}/blog`}>
+                <a className="block w-full text-3xl" href={`/${lang}/blog`}>
                   {t('nav.blog')}
                 </a>
               </li>
               <li>
-                <a className="text-3xl block w-full" href={`/${lang}/tags`}>
+                <a className="block w-full text-3xl" href={`/${lang}/tags`}>
                   {t('nav.tags')}
                 </a>
               </li>
