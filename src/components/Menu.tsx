@@ -48,17 +48,26 @@ export default function Menu({ lang }: Props) {
           <nav>
             <ul className="flex flex-col gap-6">
               <li>
-                <a className="block w-full text-3xl" href={`/${lang}/about`}>
+                <a
+                  className="font-heading block w-full text-3xl"
+                  href={`/${lang}/about`}
+                >
                   {t('nav.about')}
                 </a>
               </li>
               <li>
-                <a className="block w-full text-3xl" href={`/${lang}/blog`}>
+                <a
+                  className="font-heading block w-full text-3xl"
+                  href={`/${lang}/blog`}
+                >
                   {t('nav.blog')}
                 </a>
               </li>
               <li>
-                <a className="block w-full text-3xl" href={`/${lang}/tags`}>
+                <a
+                  className="font-heading block w-full text-3xl"
+                  href={`/${lang}/tags`}
+                >
                   {t('nav.tags')}
                 </a>
               </li>

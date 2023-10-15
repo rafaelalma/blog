@@ -1,0 +1,33 @@
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/700.css';
+@import '@fontsource/roboto/900.css';
+
+@import '@fontsource-variable/open-sans';
+@import '@fontsource-variable/open-sans/wght-italic.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Open Sans Variable', system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto', system-ui, sans-serif;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+}

@@ -6,5 +6,10 @@ import tailwind from '@astrojs/tailwind'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rafaelalma.netlify.app/',
-  integrations: [react(), tailwind()],
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
 })
